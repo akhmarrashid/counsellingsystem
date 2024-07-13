@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white; 
+    padding-top: 20px;
+    color: white;
+}
+
+.sidenav-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidenav-logo img {
+    width: 180px;
+    height: auto;
+}
+
+.sidenav-item {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #495057;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidenav-item:hover {
+    background-color: whitesmoke;
+}
+
+.footer {
+    background-color: white;
+    color: gray;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 120px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-version {
+    font-size: 14px;
+}
+
+.main {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+    min-height: calc(100vh - 40px - 20px); /* Adjusted */
+    box-sizing: border-box;
+}
+
+.main-content {
+    margin: 0 auto; /* Centered */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; 
+}
+
+
+.main-content h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    color: #6c757d; 
+    margin-bottom: 20px;
+}
+
+.section-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.section {
+    flex: 0 0 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-info {
+    flex: 0 0 48%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section h3 {
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.section-content {
+    color: #6c757d;
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+}       
+
+.image-container {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 15px;
+}
+
+.image-container img {
+    max-width: 300px;
+    max-height: 300px; 
+    height: auto;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section {
+        flex: 0 0 100%; /* Stack sections vertically on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
+header {
+    background-color: whitesmoke;
+    color: gray;
+    padding: 10px 20px;
+    position: fixed;
+    width: calc(100% - 250px);
+    left: 250px;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left p {
+    margin-right: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.nav-right div {
+    text-align: left;
+}
+
+.nav-right div p {
+    margin: 0;
+}
+
+.breadcrumb-wrapper {
+    margin-top: 60px;
+    width: calc(100% - 250px);
+    left: 250px;
+    position: relative;
+    z-index: 900;
+}
+
+.breadcrumb {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+    z-index: 910; 
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin-right: 5px;
+    color: #6c757d;
+}
+
+.dropdown_profile {
+    position: relative; /* Ensure proper positioning of dropdown */
+}
+
+.dropdown_profile button {
+    display: flex;
+    align-items: center; /* Align content vertically */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown_profile .profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown_profile .profile-details p {
+    margin: 0;
+}
+
+.dropdown_profile button:hover {
+    background-color: #e9ecef;
+}
+
+.dropdown_profile button img {
+    width: 40px; /* Adjust image size as needed */
+    height: 40px;
+    border-radius: 50%; /* Ensure rounded corners for circular images */
+    margin-right: 10px; /* Adjust margin between image and text */
+}
+
+.dropdown_profile button div {
+    text-align: left;
+}
+
+.dropdown_profile_content {
+    position: absolute;
+    top: 100%; /* Position dropdown content below the button */
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    min-width: 120px;
+    z-index: 1;
+}
+
+.dropdown_profile_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown_profile_content a:hover {
+    background-color: #f1f1f1;
+}
+
+.border-t {
+    border-top: 1px solid #e9ecef;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.py-2 {
+    padding: 20px 0;
+}
+
+.first\\:pt-0:first-child {
+    padding-top: 0;
+}
+
+.last\\:pb-0:last-child {
+    padding-bottom: 0;
+}

@@ -1,0 +1,31 @@
+/* admin.css */
+
+/* Main content layout */
+.main-content {
+    padding: 20px;
+}
+
+/* Analytics section */
+.analytics-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.analytics-card {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 45%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.analytics-card p {
+    margin-bottom: 8px;
+}

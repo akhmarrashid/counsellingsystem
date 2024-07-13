@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff List</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/student.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <p>Welcome,</p>
+                <p><strong>{{ user.username }}</strong></p>
+            </div>
+            <div class="nav-right">
+                <div class="dropdown_profile">
+                    <button onclick="toggleDropdown()">
+                        {% if user.admin.adminImage %}
+                            <img src="{{ user.admin.adminImage.url }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}">
+                        {% endif %}
+                        <div class="profile-details">
+                            <p><strong>Admin</strong></p>
+                            <p>{{ user.get_full_name }}</p>
+                        </div>
+                    </button>
+                    <div class="dropdown_profile_content">
+                        <a href="{% url 'profile_admin' %}">Profile</a>
+                        <a href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="{% url 'dashboard_admin' %}">Home</a> <span>&gt;</span> 
+            <a href="{% url 'manage_appointment' %}">Appointment</a> <span>&gt;</span> 
+            <a href="{% url 'session_detail' %}">Detail</a>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="sidenav-logo">
+            <img src="{% static 'img/CounselLinkLogo.png' %}" alt="CounselLink Logo">
+        </div>
+        <a href="{% url 'dashboard_admin' %}" class="sidenav-item">Home</a>
+        <a href="{% url 'manage_appointment' %}" class="sidenav-item">Appointment</a>
+        <a href="{% url 'admin_list' %}" class="sidenav-item">Admin</a>
+        <a href="{% url 'student_list' %}" class="sidenav-item">Student</a>
+        <a href="{% url 'staff_list' %}" class="sidenav-item">Staff</a>
+    </div>
+
+    <div class="main">
+        <div class="container" style="width:500px;">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="h3 mb-4 text-primary font-weight-bold text-center">Report Counselling Session</h1>
+                    {% if appointment %}
+                    <form class="form" method="POST" action="{% url 'save_session_detail' %}">
+                        {% csrf_token %}
+    
+                        <div class="form-group focused">
+                            <label class="text-l" for="customer">Student Name</label>
+                            <input type="text" id="customer" name="customer" class="form-control form-control-alternative" value="{{ appointment.student.user.get_full_name }}" readonly>
+                        </div>
+    
+                        <div class="form-group focused">
+                            <label class="text-l" for="client_background">Client Background </label>
+                            <textarea id="client_background" name="client_background" class="form-control form-control-alternative" required></textarea>
+                        </div>
+    
+                        <div class="form-group focused">
+                            <label class="text-l" for="matter_presented">Matter Presented</label>
+                            <textarea id="matter_presented" name="matter_presented" class="form-control form-control-alternative" required></textarea>
+                        </div>
+    
+                        <div class="form-group focused">
+                            <label class="text-l" for="action_taken">Action </label>
+                            <textarea id="action_taken" name="action_taken" class="form-control form-control-alternative" required></textarea>
+                        </div>
+    
+                        <div class="form-group text-center">
+                            <input type="submit" value="Save" class="btn btn-primary text-center"/>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content flex justify-center items-center">
+            <img class="footer-logo" src="{% static 'img/CounselLinkLogo.png' %}" alt="logo">
+            <p class="footer-version">Ver1.0.1</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

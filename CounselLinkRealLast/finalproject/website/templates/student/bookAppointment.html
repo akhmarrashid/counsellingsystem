@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/student.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <p>Welcome,</p>
+                <p><strong>{{ user.username }}</strong></p>
+            </div>
+            <div class="nav-right">
+                <div class="dropdown_profile">
+                    <button onclick="toggleDropdown()">
+                        {% if user.student.stuImage %}
+                            <img src="{{ user.student.stuImage.url }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}">
+                        {% endif %}
+                        <div class="profile-details">
+                            <p><strong>Student</strong></p>
+                            <p>{{ user.get_full_name }}</p>
+                        </div>
+                    </button>
+                    <div class="dropdown_profile_content">
+                        <a href="{% url 'profile_student' %}">Profile</a>
+                        <a href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="{% url 'dashboard_student' %}">Home</a><span>&gt;</span>
+            <a href="{% url 'appointment_student' %}">Appointment</a><span>&gt;</span>
+            <a href="{% url 'book_appointment' %}">Book Appointment</a>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="sidenav-logo">
+            <img src="{% static 'img/CounselLinkLogo.png' %}" alt="CounselLink Logo">
+        </div>
+        <a href="{% url 'dashboard_student' %}" class="sidenav-item">Home</a>
+        <a href="{% url 'appointment_student' %}" class="sidenav-item">Appointment</a>
+        <a href="{% url 'faq_student' %}" class="sidenav-item">FAQ</a>
+    </div>
+    <div class="main">
+        <div class="container-fluid">
+            <div class="container" style="width:500px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h3 mb-4 text-primary font-weight-bold text-center">Book an Appointment</h1>
+                        <form class="form" method="POST" action="{% url 'book_appointment' %}">
+                            {% csrf_token %}
+                            <div class="form-group focused">
+                                {{ form.admin.label_tag }}
+                                {{ form.admin }}
+                            </div>
+
+                            <div class="form-group focused">
+                                {{ form.date.label_tag }}
+                                {{ form.date }}
+                            </div>
+
+                            <div class="form-group focused">
+                                {{ form.time.label_tag }}
+                                {{ form.time }}
+                            </div>
+
+                            <div class="form-group focused">
+                                {{ form.issue.label_tag }}
+                                {{ form.issue }}
+                            </div>
+
+                            <div class="form-group text-center">
+                                <input type="submit" value="Book" class="btn btn-primary text-center"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content flex justify-center items-center">
+            <img class="footer-logo" src="{% static 'img/CounselLinkLogo.png' %}" alt="logo">
+            <p class="footer-version">Ver1.0.1</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

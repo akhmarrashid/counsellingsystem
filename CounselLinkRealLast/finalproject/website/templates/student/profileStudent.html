@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <p>Welcome,</p>
+                <p><strong>{{ user.username }}</strong></p>
+            </div>
+            <div class="nav-right">
+                <div class="dropdown_profile">
+                    <button onclick="toggleDropdown()">
+                        {% if user.student.stuImage %}
+                            <img src="{{ user.student.stuImage.url }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}">
+                        {% endif %}
+                        <div class="profile-details">
+                            <p><strong>Student</strong></p>
+                            <p>{{ user.get_full_name }}</p>
+                        </div>
+                    </button>
+                    <div class="dropdown_profile_content">
+                        <a href="{% url 'profile_student' %}">Profile</a>
+                        <a href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+<br>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="{% url 'dashboard_student' %}">Home</a><span>&gt;</span>
+            <a href="{% url 'profile_student' %}">Profile</a>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="sidenav-logo">
+            <img src="{% static 'img/CounselLinkLogo.png' %}" alt="CounselLink Logo">
+        </div>
+        <a href="{% url 'dashboard_student' %}" class="sidenav-item">Home</a>
+        <a href="{% url 'appointment_student' %}" class="sidenav-item">Appointment</a>
+        <a href="{% url 'faq_student' %}" class="sidenav-item">FAQ</a>
+    </div>
+    <div class="main">
+        <div class="main-content">
+            <h2>Student Profile</h2>
+            <div class="profile-details-container">
+                <div class="profile-image">
+                    {% if student.stuImage %}
+                        <img src="{{ student.stuImage.url }}" alt="Student Image">
+                    {% else %}
+                        <img src="{% static 'img/default.png' %}" alt="Default Image">
+                    {% endif %}
+                </div>
+                <div class="profile-info">
+                    <p><strong>Username:</strong> {{ student.user.username }}</p>
+                    <p><strong>Email:</strong> {{ student.user.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ student.stuPhoneno }}</p>
+                </div>
+            </div>
+            <div class="section-container">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content flex justify-center items-center">
+            <img class="footer-logo" src="{% static 'img/CounselLinkLogo.png' %}" alt="logo">
+            <p class="footer-version">Ver1.0.1</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

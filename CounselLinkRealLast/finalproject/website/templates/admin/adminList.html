@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin List</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <p>Welcome,</p>
+                <p><strong>{{ user.username }}</strong></p>
+            </div>
+            <div class="nav-right">
+                <div class="dropdown_profile">
+                    <button onclick="toggleDropdown()">
+                        {% if user.admin.adminImage %}
+                            <img src="{{ user.admin.adminImage.url }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}">
+                        {% endif %}
+                        <div class="profile-details">
+                            <p><strong>Admin</strong></p>
+                            <p>{{ user.get_full_name }}</p>
+                        </div>
+                    </button>
+                    <div class="dropdown_profile_content">
+                        <a href="{% url 'profile_admin' %}">Profile</a>
+                        <a href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="{% url 'dashboard_admin' %}">Home</a> <span>&gt;</span> 
+            <a href="{% url 'admin_list' %}">Admin</a>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="sidenav-logo">
+            <img src="{% static 'img/CounselLinkLogo.png' %}" alt="CounselLink Logo">
+        </div>
+        <a href="{% url 'dashboard_admin' %}" class="sidenav-item">Home</a>
+        <a href="{% url 'manage_appointment' %}" class="sidenav-item">Appointment</a>
+        <a href="{% url 'admin_list' %}" class="sidenav-item">Admin</a>
+        <a href="{% url 'student_list' %}" class="sidenav-item">Student</a>
+        <a href="{% url 'staff_list' %}" class="sidenav-item">Staff</a>
+    </div>
+
+    <div class="main">
+        <div class="main-content">
+            <div class="header-container">
+                <h2>Admin List</h2>
+                <button class="add-button" onclick="redirectToCreateAdmin()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"/></svg>
+                    Add Admin</button>
+            </div>
+            <div class="section-container">
+                <div class="section">
+                    <h3>Existing Admins</h3>
+                    <div class="section-content">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for admin in admins %}
+                                <tr onclick="redirectToAdminDetail('{{ admin.user.username }}')" style="cursor: pointer;">
+                                    <td>
+                                            {% if admin.adminImage %}
+                                                <img src="{{ admin.adminImage.url }}" alt="Admin Image" class="admin-image">
+                                            {% else %}
+                                                <img src="{% static 'img/default.png' %}" alt="Default Image" class="admin-image">
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ admin.adminName }}</td>
+                                        <td>{{ admin.adminPhoneno }}</td>
+                                        <td>{{ admin.user.email }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content flex justify-center items-center">
+            <img class="footer-logo" src="{% static 'img/CounselLinkLogo.png' %}" alt="logo">
+            <p class="footer-version">Ver1.0.1</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+        function redirectToCreateAdmin() {
+            window.location.href = '{% url "create_admin" %}';
+        }
+        function redirectToAdminDetail(adminId) {
+        window.location.href = "{% url 'admin_detail' 'ID_PLACEHOLDER' %}".replace('ID_PLACEHOLDER', adminId);
+    }
+    </script>
+</body>
+</html>

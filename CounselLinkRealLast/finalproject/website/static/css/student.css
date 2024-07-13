@@ -1,0 +1,177 @@
+.header-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+.add-button svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    color: white;
+}
+.add-button:hover {
+    background-color: #0056b3;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.table th {
+    background-color: #f2f2f2;
+}
+
+.status-approved {
+    color: green;
+}
+
+.container-fluid {
+    padding: 20px;
+}
+
+/* Center the container on the page */
+.container {
+    margin: 0 auto;
+}
+
+/* Card styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* Card body padding */
+.card-body {
+    padding: 20px;
+}
+
+/* Form headings */
+.h3.mb-4.text-primary.font-weight-bold.text-center {
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Form groups styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label.text-l {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Input field styling */
+.form-control.form-control-alternative {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.form-control.form-control-alternative:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+/* Error message styling */
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.alert.alert-{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.alert.alert-.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Submit button styling */
+.btn.btn-primary.text-center {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn.btn-primary.text-center:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.form-group.focused label.text-l {
+    color: #007bff;
+}
+
+.form-group.focused .form-control.form-control-alternative {
+    border-color: #007bff;
+}
+
+.form-group.focused .form-control.form-control-alternative:focus {
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}
+
+.add-button svg {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
